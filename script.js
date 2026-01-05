@@ -541,7 +541,6 @@ for (const player of game.scored) {
   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
 }*/
 
-
 // video 128 - Sets CHiE
 /*const orderSet = new Set([
   'Pasta',
@@ -646,7 +645,7 @@ console.log(rest.size);
 console.log(rest.get(arr));*/
 
 // video 131 - Maps Iteration
-const question = new Map([
+/*const question = new Map([
   ['question', 'what is the best programing language in the world?'],
   [1, 'c'],
   [2, 'java'],
@@ -657,22 +656,279 @@ const question = new Map([
 ]);
 console.log(question);
 
-// Convert object to map
+const openingHours = {
+  thu: {
+    open: 11,
+    close: 23,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
 
+// Convert object to map
 console.log(Object.entries(openingHours));
 const hoursMap = new Map(Object.entries(openingHours));
 console.log(hoursMap);
 
+// Quiz app
+console.log(question.get('question'));
 for (const [key, value] of question) {
-  
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
 }
 
+//const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
 
+console.log(question.get(question.get('correct') === answer));
 
+// Convert array to map
+console.log(...question);
+//console.log(question.entries());
+console.log(...question.keys());
+console.log(...question.values());*/
 
+// video 132 - Summary Which Data Structure to Use
 
+// video 133 - challenge 3
+// Coding Challenge #3
 
+/* 
+Let's continue with our football betting app! This time, we have a map with a log of the events that happened during the game. The values are the events themselves, and the keys are the minutes in which each event happened (a football game has 90 minutes plus some extra time).
 
+1. Create an array 'events' of the different game events that happened (no duplicates)
+2. After the game has finished, is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
+3. Print the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
+4. Loop over the events and log them to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
+      [FIRST HALF] 17: ⚽️ GOAL
 
+GOOD LUCK 😀
+*/
 
+/*const gameEvents = new Map([
+  [17, '⚽️ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽️ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽️ GOAL'],
+  [80, '⚽️ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
 
+// 1.
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+
+// 2.
+gameEvents.delete(64);
+
+// 3.
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+const time = [...gameEvents.keys()].pop();
+console.log(time);
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
+
+// 4.
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'First' : 'Second';
+  console.log(`[${half} Half] ${min}: ${event}`);
+}
+*/
+
+// video 134 - working with strings - part 1
+/*const airLine = 'Tap Air Portugal';
+const plane = 'A320';
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[0]);
+
+console.log(airLine.length);
+console.log('B737'.length);
+
+console.log(airLine.indexOf('r'));
+console.log(airLine.lastIndexOf('r'));
+console.log(airLine.indexOf('portugal'));
+
+console.log(airLine.slice(4));
+console.log(airLine.slice(4, 7));
+
+console.log(airLine.slice(0, airLine.indexOf(' ')));
+console.log(airLine.slice(airLine.lastIndexOf(' ') + 1));
+console.log(airLine.slice(-2));
+console.log(airLine.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  if (s === 'B' || s === 'E') console.log('You got the middle seat');
+  else console.log('You got Lucky!');
+};
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(new String('Milad'));
+console.log(typeof new String('Milad'));
+
+console.log(typeof new String('Milad').slice(1));*/
+
+// video - 135 - working with strings - part 2
+//const airLine = 'Tap Air Portugal';
+/*console.log(airLine.toLowerCase());
+console.log(airLine.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'mIlAd';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Comparing emails
+const email = 'hello@milad.io';
+const loginEmail = 'HELLO@MILAD.IO';
+//const lowerLoginEmail = loginEmail.toLowerCase();
+//const trimmedEmail = lowerLoginEmail.trim();
+const trimmedEmail = loginEmail.toLowerCase().trim();
+console.log(trimmedEmail);
+console.log(email === trimmedEmail);
+
+// Replacing
+const priceGB = '288,97£';
+const priceUS = priceGB.replace('£', '$').replace(',', '.');
+console.log(priceUS);
+
+const announcement =
+  'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+//console.log(announcement.replaceAll('door', 'gate'));
+console.log(announcement.replace(/door/g, 'gate'));
+
+// Booleans
+const plane2 = 'Airbus A320neo';
+console.log(plane2.includes('A320'));
+console.log(plane2.includes('Boeing'));
+console.log(plane2.startsWith('Airb'));
+if (plane2.startsWith('Airbus') && plane2.endsWith('neo')) {
+  console.log('Part of the new Airbus family');
+}
+
+// Practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard!');
+  }
+};
+
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and camera');
+checkBaggage('Got some snacks and a gun for protection');*/
+
+// video 136 - working with strings - part 3
+//  split and join
+/*console.log('a+very+nice+string'.split('+'));
+console.log('Milad PC'.split(' '));
+const [firstName, lastName] = 'Milad PC'.split(' ');
+console.log(firstName, lastName);
+const newName = ['Mr.', firstName, lastName.toLowerCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('milad pc');
+
+// Padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+').padEnd(30, '+'));
+console.log('Milad'.padStart(25, '+').padEnd(30, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+
+console.log(maskCreditCard(4337846384738493));
+console.log(maskCreditCard('3437846384738493'));
+
+// Repeat
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5));
+console.log('Milad '.repeat(5));
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+};
+
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);
+*/
+
+// video 137 - CHALLENGE 4
+/*
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
+The input will come from a textarea inserted into the DOM (see code below to create the textarea and button).
+When the button is pressed, the conversion will happen and the result will be printed to the console. Each variable name will be on a new line.
+The output should look like this (5 separate console.log outputs):
+underscoreCase  => underscoreCase
+first_name      => firstName
+Some_Variable   => someVariable
+calculate_AGE  => calculateAge
+delayed_departure => delayedDeparture
+Hint: Remember which character defines a new line in the textarea  😉
+GOOD LUCK 😀*/
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+
+  //console.log(rows);
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+});
+
+const question = new Map([
+  ['question', 'what is the best programing language in the world?'],
+  [1, 'c'],
+  [2, 'java'],
+  [3, 'javaScript'],
+  ['Correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again!'],
+]);
