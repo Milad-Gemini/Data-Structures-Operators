@@ -899,20 +899,27 @@ Write a program that receives a list of variable names written in underscore_cas
 The input will come from a textarea inserted into the DOM (see code below to create the textarea and button).
 When the button is pressed, the conversion will happen and the result will be printed to the console. Each variable name will be on a new line.
 The output should look like this (5 separate console.log outputs):
-underscoreCase  => underscoreCase
-first_name      => firstName
-Some_Variable   => someVariable
-calculate_AGE  => calculateAge
-delayed_departure => delayedDeparture
-Hint: Remember which character defines a new line in the textarea  😉
-GOOD LUCK 😀*/
-document.body.append(document.createElement('textarea'));
+underscoreCase  ✅
+camelCase      ✅✅
+someVariable   ✅✅✅
+calculateAge  ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+Hint 1: Remember which character defines a new line in the textarea 😉
+Hint 2: The solution only needs to work for a variable made out of 2 words, like a_b
+Hint 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+Hint 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
+
+Afterwards, test with your own test data!
+GOOD LUCK 😀
+*/
+
+/*document.body.append(document.createElement('textarea'));
+
 document.body.append(document.createElement('button'));
+
 document.querySelector('button').addEventListener('click', function () {
   const text = document.querySelector('textarea').value;
   const rows = text.split('\n');
-
-  //console.log(rows);
   for (const [i, row] of rows.entries()) {
     const [first, second] = row.toLowerCase().trim().split('_');
     const output = `${first}${second.replace(
@@ -922,13 +929,25 @@ document.querySelector('button').addEventListener('click', function () {
     console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
   }
 });
+*/
 
-const question = new Map([
-  ['question', 'what is the best programing language in the world?'],
-  [1, 'c'],
-  [2, 'java'],
-  [3, 'javaScript'],
-  ['Correct', 3],
-  [true, 'Correct'],
-  [false, 'Try again!'],
-]);
+// video 138 - string methods practice
+/*const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} from ${getCode(from)} to ${getCode(to)} (${time.replace(
+    ':',
+    'h'
+  )})`.padStart(36);
+  console.log(output);
+}
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)*/
